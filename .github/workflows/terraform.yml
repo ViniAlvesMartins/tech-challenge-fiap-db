@@ -72,14 +72,6 @@ jobs:
             </details>
 
             *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
-
     
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
@@ -89,20 +81,4 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'pull_request'
         run: terraform apply -auto-approve -input=true 
         working-directory: ${{ env.working-directory }}
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          
+    
