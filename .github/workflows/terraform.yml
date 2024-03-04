@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./infra
+        working-directory: ./
         shell: bash
     permissions:
       id-token: write
@@ -72,8 +72,6 @@ jobs:
             </details>
 
             *Pushed by: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
-
-
     
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
@@ -84,19 +82,3 @@ jobs:
         run: terraform apply -auto-approve -input=true 
         working-directory: ${{ env.working-directory }}
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-          
