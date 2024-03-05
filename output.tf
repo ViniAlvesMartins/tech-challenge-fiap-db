@@ -11,5 +11,5 @@ output "db_username" {
 }
 
 output "db_password_secret_name" {
-  value = aws_secretsmanager_secret.ze_burguer_db_password.arn
+  value = aws_secretsmanager_secret.ze_burguer_password.arn
 }

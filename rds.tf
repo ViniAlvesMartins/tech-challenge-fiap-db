@@ -3,12 +3,12 @@ resource "aws_db_subnet_group" "subnet_group" {
   subnet_ids = ["subnet-063e56bb28d5750f7", "subnet-0e7cf64a4ce1aeb12"]  # Substitua pelos IDs das subnets onde o RDS deve ser criado
 }
 
-resource "aws_secretsmanager_secret" "ze_burguer_db_password" {
-  name = "password_ze_burguer_db"
+resource "aws_secretsmanager_secret" "ze_burguer_password" {
+  name = "ze_burguer_password"
 }
 
 resource "aws_secretsmanager_secret_version" "example_db_password_version" {
-  secret_id     = aws_secretsmanager_secret.ze_burguer_db_password.id
+  secret_id     = aws_secretsmanager_secret.ze_burguer_password.id
   secret_string = random_password.password.result
 }
 
