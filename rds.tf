@@ -4,7 +4,8 @@ resource "aws_db_subnet_group" "subnet_group" {
 }
 
 resource "aws_secretsmanager_secret" "ze_burguer_db_password" {
-  name = "password_ze_burguer_db"
+  name = "ze_burguer_db"
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "example_db_password_version" {
@@ -30,6 +31,7 @@ resource "aws_db_instance" "zeburguer_db" {
   password              = random_password.password.result
   db_subnet_group_name  = aws_db_subnet_group.subnet_group.name
   final_snapshot_identifier = "false"
+  skip_final_snapshot = true
 
   tags = {
     Name = "zeburger-db"
