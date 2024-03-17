@@ -20,18 +20,19 @@ resource "random_password" "password" {
 }
 
 resource "aws_db_instance" "zeburguer_db" {
-  identifier            = "zeburger-db"
-  allocated_storage     = 20
-  storage_type          = "gp2"
-  engine                = "postgres"
-  engine_version        = "14"
-  instance_class        = "db.t4g.micro"
-  db_name               = "zeburguer"
-  username              = "zeburguer"
-  password              = random_password.password.result
-  db_subnet_group_name  = aws_db_subnet_group.subnet_group.name
+  identifier                = "zeburger-db"
+  allocated_storage         = 20
+  storage_type              = "gp2"
+  engine                    = "postgres"
+  engine_version            = "14"
+  instance_class            = "db.t4g.micro"
+  db_name                   = "zeburguer"
+  username                  = "zeburguer"
+  password                  = random_password.password.result
+  db_subnet_group_name      = aws_db_subnet_group.subnet_group.name
   final_snapshot_identifier = "false"
-  skip_final_snapshot = true
+  skip_final_snapshot       = true
+  publicly_accessible       = true
 
   tags = {
     Name = "zeburger-db"
